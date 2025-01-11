@@ -12,12 +12,22 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+
     @Column(name = "login")
   private   String login;
+
+    @Column(name="Email")
+    private String Email;
 
     @Column(name = "password")
   private   String password;
 
     @Column(name = "userType")
    private String userType;
+
+    @Column(name = "userStatus")
+    private String userStatus;
+
+    @Column(name = "userIp")
+    private String userIp;
 }

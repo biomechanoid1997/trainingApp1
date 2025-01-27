@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:color="http://www.w3.org/1999/xhtml">
 <style>
     .FunctionButton{
         color: rgb(6, 129, 222);
@@ -8,6 +8,19 @@
         border: 10px solid rgb(255, 255, 255);
         background-color: rgb(100, 100, 100);
     }
+    .RegisterBoxFrame{
+      border: 10px solid rgb(0, 0, 0);
+      background-color: rgb(100, 100, 100);
+    }
+    .RegisterFont{
+      font-family: Arial;
+      color: rgb(255, 255, 0);
+    }
+    .ErrorFont{
+        font-family: Arial;
+        color: rgb(255, 0, 0);
+    }
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -16,14 +29,40 @@
 <body>
 <div>
   <form action="register" method="post">
+      <div class="RegisterBoxFrame">
+    <h2 class="RegisterFont">Регистрационные данные</h2>
     <h3>Имя пользователя</h3>
+          <p class="errorFont" th:text="${userError}"></p>
     <input type="text" name="login" size="30" maxlength="30" value="Имя пользователя">
       <h3>E-mail пользователя</h3>
+          <p class="errorFont" th:text="${emailError}"></p>
       <input type="text" name="email" size="30" maxlength="30" value="E-mail пользователя">
     <h3>Пароль</h3>
     <input type="password" name="password" size="30" maxlength="30" >
      <!-- <a href="/" class="FunctionButton">Зарегистрироватсья</a> -->
-      <button type="submit" > Далее</button>
+</div>
+      
+    <div class="RegisterBoxFrame">
+      <h2 class="RegisterFont">Личные данные пользователя</h2>
+        <h3>Ваше имя</h3>
+        <input type="text" name="firstName" size="30" maxlength="30" th:placeholder="${firstName}"  >
+        <h3>Ваша фамилия</h3>
+        <input type="text" name="lastName" size="30" maxlength="30" th:placeholder="${lastName}">
+        <h3>Ваша дата рождения</h3>
+        <input type="date" name="birthDate" size="30" th:placeholder="${birthDate}">
+        <h3>Ваш пол</h3>
+        <select name="sex" th:placeholder="${sex}">
+            <option value="Male">Мужской</option>
+            <option value="Female">Женский</option>
+        </select><br>
+        <h3>Семейный статус</h3>
+        <select name="maritalStatus" th:placeholder="${maritalStatus}">
+            <option value="single">холост/незамужем</option>
+            <option value="married">Женат/замужем</option>
+            <option value="hasChildren">Есть дети</option>
+        </select><br>
+    </div>
+      <button type="submit" > Зарегистрироваться</button>
   </form>
 </div>
 </body>

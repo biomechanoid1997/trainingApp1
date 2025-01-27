@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .RegisterBoxFrame{
+        border: 10px solid rgb(0, 0, 0);
+        background-color: rgb(100, 100, 100);
+    }
+    .RegisterFont{
+        font-family: Arial;
+        color: rgb(255, 255, 0);
+    }
+</style>
+<body>
+<div class="RegisterBoxFrame">
+<h2 class="RegisterFont">Добавьте собственность для аренды</h2>
+<form action="addProperty" method="post">
+    <h3 class="RegisterFont">Изображение</h3>
+  <!--  <input name="file" type="file" placeholder="Добавить изображение"><br> -->
+    <h3 class="RegisterFont">Город</h3>
+<input type="text" name="City" size="30" maxlength="30" >
+    <h3 class="RegisterFont">Адрес</h3>
+    <input type="text" name="Address" size="30" maxlength="30" >
+    <h3 class="RegisterFont">Тип собственности</h3>
+    <select name="PropertyType">
+        <option value="room">Комната</option>
+<option value="flat">Квартира</option>
+        <option value="hostel">Хостел/общежитие</option>
+        <option value="hotel">Отель/гостиница</option>
+        <option value="house">Дом/коттедж</option>
+    </select>
+    <h3 class="RegisterFont">Количество проживающих</h3>
+    <input type="number" name="humanCapacity">
+    <h3 class="RegisterFont">Можно-ли с детьми</h3>
+    <input type="hidden" value="false" name="allowChildren">
+    <input type="checkbox" value="true" name="allowChildren">
+    <h3 class="RegisterFont">Стоимость проживания в сутки.</h3>
+    <input type="number" name="rentalPrice" >
+    <h3 class="RegisterFont">Статус аренды</h3>
+    <ul>
+        <li> <input type="radio" name="rentalStatus" value="vacant" checked>Свободно для аренды</li>
+        <li> <input type="radio" name="rentalStatus" value="occupied">Занято/арендовано</li>
+        <li> <input type="radio" name="rentalStatus" value="maintenance">ремонт/обслуживание</li>
+        <li> <input type="radio" name="rentalStatus" value="closed">Закрыто</li>
+    </ul>
+<button type="submit">Зарегистрировать собственность</button>
+</form>
+</div>
+</body>
+</html>

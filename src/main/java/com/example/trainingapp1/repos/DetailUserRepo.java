@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DetailUserRepo extends JpaRepository<DetailUserModel,Long>{
+    DetailUserModel findDetailUserModelByUserTableId(Long userTableID);
 }

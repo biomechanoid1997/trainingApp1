@@ -17,13 +17,13 @@
 <body>
 <div class="RegisterBoxFrame">
 <h2 class="RegisterFont">Добавьте собственность для аренды</h2>
-<form action="addProperty" method="post">
+<form method="post" enctype="multipart/form-data">
     <h3 class="RegisterFont">Изображение</h3>
-  <!--  <input name="file" type="file" placeholder="Добавить изображение"><br> -->
+    <input name="file" type="file" placeholder="Добавить изображение"><br>
     <h3 class="RegisterFont">Город</h3>
 <input type="text" name="City" size="30" maxlength="30" >
     <h3 class="RegisterFont">Адрес</h3>
-    <input type="text" name="Address" size="30" maxlength="30" >
+    <input type="text" name="Address" size="30" maxlength="100" >
     <h3 class="RegisterFont">Тип собственности</h3>
     <select name="PropertyType">
         <option value="room">Комната</option>
@@ -32,6 +32,8 @@
         <option value="hotel">Отель/гостиница</option>
         <option value="house">Дом/коттедж</option>
     </select>
+    <h3 class="RegisterFont">Описание</h3>
+    <textarea name="Description" cols="80" rows="6"></textarea>
     <h3 class="RegisterFont">Количество проживающих</h3>
     <input type="number" name="humanCapacity">
     <h3 class="RegisterFont">Можно-ли с детьми</h3>
@@ -46,7 +48,7 @@
         <li> <input type="radio" name="rentalStatus" value="maintenance">ремонт/обслуживание</li>
         <li> <input type="radio" name="rentalStatus" value="closed">Закрыто</li>
     </ul>
-<button type="submit" id="">Зарегистрировать собственность</button>
+<button type="submit">Зарегистрировать собственность</button>
 </form>
 </div>
 </body>

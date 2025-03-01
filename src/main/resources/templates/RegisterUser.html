@@ -45,18 +45,18 @@
     <div class="RegisterBoxFrame">
       <h2 class="RegisterFont">Личные данные пользователя</h2>
         <h3>Ваше имя</h3>
-        <input type="text" name="firstName" size="30" maxlength="30" th:placeholder="${firstName}"  >
+        <input type="text" name="firstName" size="30" maxlength="30" th:value="${firstName}"  >
         <h3>Ваша фамилия</h3>
-        <input type="text" name="lastName" size="30" maxlength="30" th:placeholder="${lastName}">
+        <input type="text" name="lastName" size="30" maxlength="30" th:value="${lastName}">
         <h3>Ваша дата рождения</h3>
-        <input type="date" name="birthDate" size="30" th:placeholder="${birthDate}">
+        <input type="date" name="birthDate" size="30" th:value="${birthDate}">
         <h3>Ваш пол</h3>
-        <select name="sex" th:placeholder="${sex}">
+        <select name="sex" th:value="${sex}">
             <option value="Male">Мужской</option>
             <option value="Female">Женский</option>
         </select><br>
         <h3>Семейный статус</h3>
-        <select name="maritalStatus" th:placeholder="${maritalStatus}">
+        <select name="maritalStatus" th:value="${maritalStatus}">
             <option value="single">холост/незамужем</option>
             <option value="married">Женат/замужем</option>
             <option value="hasChildren">Есть дети</option>

@@ -19,7 +19,7 @@ public class UserController {
     DetailUserRepo detailUserRepo;
 
     @GetMapping("/{id}")
-    public String getUserPage(@PathVariable long id,
+    public String getUserPage(@PathVariable Long id,
                               Model model){
         DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(id);
         String name = "Здравствуйте " + detailUserModel.getFirstName();

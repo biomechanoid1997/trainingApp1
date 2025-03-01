@@ -6,6 +6,9 @@
 </head>
 <body>
 <h2 th:text="${Name}"></h2>
-<a th:href="'/addProperty/' + ${ID}">Добавить собственность</a>
+<a th:href="'/addProperty/' + ${ID}">Добавить собственность</a><br>
+<a th:href="'/property/viewProperty/' + ${ID}">Посмотреть собственность</a>
+<br>
+<a th:href="'/messages/' + ${ID}">Сообщения</a>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  .RegisterBoxFrame{
+    border: 10px solid rgb(0, 0, 0);
+    background-color: rgb(100, 100, 100);
+  }
+  .funcButton{
+      background-color: rgb(150, 150, 100);
+  }
+  .RegisterFont{
+    font-family: Arial;
+    color: rgb(255, 255, 0);
+  }
+  th,td{
+      border:2px solid black;
+  }
+  table{border-collapse: collapse;}
+  td{padding: 20px;}
+</style>
+<body>
+<div class="RegisterBoxFrame" >
+    <table>
+        <caption class="RegisterFont"> Собственность пользователя</caption>
+        <tr><th>Город</th><th>Адрес</th><th>Тип собственности</th><th>Описание</th><th>Стоимость проживания</th><th>Вместительность</th><th>Можно детям</th><th>Статус</th><th>Дополнительно</th></tr>
+   <tr th:each="i : ${propertyList}" >
+       <td th:text="${i.getCity()}"></td>
+       <td th:text="${i.getAddress()}"></td>
+       <td th:text="${i.getRentalType()}"></td>
+       <td th:text="${i.getRentalDescription()}"></td>
+       <td th:text="${i.getRentalPrice()}"></td>
+       <td th:text="${i.getCapacity()}"></td>
+       <td th:text="${i.getAllowChildren()}"></td>
+       <td th:text="${i.getRentalStatus()}"></td>
+       <td><a class="funcButton" th:href="'/editProperty/' + ${i.getId()}">Редактировать</a><br></br>
+           <a class="funcButton" th:href="'/deleteProperty/' + ${i.getId()}">удалить</a>
+       </td>
+   </tr>
+    </table>
+
+</div>
+</body>
+</html>

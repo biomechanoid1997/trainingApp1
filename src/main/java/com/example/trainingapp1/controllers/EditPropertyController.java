@@ -1,15 +1,12 @@
 package com.example.trainingapp1.controllers;
 
-import com.example.trainingapp1.models.DetailUserModel;
 import com.example.trainingapp1.models.PropertyImageModel;
 import com.example.trainingapp1.models.PropertyModel;
-import com.example.trainingapp1.models.UserModel;
 import com.example.trainingapp1.repos.DetailUserRepo;
 import com.example.trainingapp1.repos.PropertyImageRepo;
 import com.example.trainingapp1.repos.PropertyRepo;
 import com.example.trainingapp1.repos.UserRepo;
 import com.example.trainingapp1.services.FirebaseService;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
-@RequestMapping("/addProperty")
-public class AddPropertyController {
+@RequestMapping("/editProperty")
+public class EditPropertyController {
     @Autowired
     DetailUserRepo detailUserRepo;
     @Autowired
@@ -32,35 +32,39 @@ public class AddPropertyController {
     FirebaseService firebaseService;
 
     @GetMapping("/{id}")
-    public String getPropertyPage(
-            @PathVariable Long id,
+    public String editUserProperty(
+            @PathVariable long id,
             Model model
     ){
-        DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(id);
-        model.addAttribute("Name",detailUserModel.getFirstName());
-        model.addAttribute("id",id);
-        return "propertyAdd";
+        PropertyModel propertyModel = propertyRepo.findById(id);
+        List<PropertyImageModel> propertyImages = propertyImageRepo.findPropertyImageModelsByPropertyTableId(propertyModel.getId());
+        for (int i = 0; i < propertyImages.size(); i++) {
+            propertyImages.get(i).setImageUrl(firebaseService.getUrl(propertyImages.get(i).getImageUrl()));
+        }
+        String ownerId = String.valueOf(propertyModel.getOwnerID());
+        model.addAttribute("property",propertyModel);
+        model.addAttribute("propertyImages",propertyImages);
+      return "propertyEditPage";
     }
     @PostMapping("/{id}")
-    public RedirectView setProperty(
-            @PathVariable Long id,
+    public RedirectView updateUserProperty(
+            @PathVariable long id,
             Model model,
             @RequestParam MultipartFile file,
-                                    @RequestParam String City,
-                                    @RequestParam String Description,
-                                    @RequestParam String Address,
-                                    @RequestParam Long humanCapacity,
-                                    @RequestParam String PropertyType,
-                                    @RequestParam String allowChildren,
-                                    @RequestParam Long rentalPrice,
-                                    @RequestParam String rentalStatus
-    ) throws Exception {
+            @RequestParam String City,
+            @RequestParam String Description,
+            @RequestParam String Address,
+            @RequestParam Long humanCapacity,
+            @RequestParam String PropertyType,
+            @RequestParam String allowChildren,
+            @RequestParam Long rentalPrice,
+            @RequestParam String rentalStatus
+    ) throws Exception{
         String childAllow = allowChildren;
-        PropertyModel propertyModel = new PropertyModel();
+        PropertyModel propertyModel = propertyRepo.findById(id);
         PropertyImageModel propertyImageModel = new PropertyImageModel();
-        propertyModel.setOwnerID(id);
-        propertyModel.setRentalDescription(Description);
         propertyModel.setCity(City);
+        propertyModel.setRentalDescription(Description);
         propertyModel.setAddress(Address);
         propertyModel.setCapacity(humanCapacity);
         propertyModel.setRentalType(PropertyType);
@@ -69,13 +73,10 @@ public class AddPropertyController {
         }else {propertyModel.setAllowChildren("false");}
         propertyModel.setRentalPrice(rentalPrice);
         propertyModel.setRentalStatus(rentalStatus);
-        propertyRepo.save(propertyModel);
         propertyImageModel.setPropertyTableId(propertyModel.getId());
-        propertyImageModel.setImageUrl( this.firebaseService.save(file));
+        propertyImageModel.setImageUrl(this.firebaseService.save(file));
+        propertyRepo.save(propertyModel);
         propertyImageRepo.save(propertyImageModel);
-
-     model.addAttribute("id",id);
-        return new RedirectView("/user/" +model.getAttribute("id")  ) ;
+        return new RedirectView("/property/viewProperty/"+ propertyModel.getOwnerID());
     }
-
 }

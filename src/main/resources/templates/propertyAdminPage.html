@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .RegisterBoxFrame{
+        border: 10px solid rgb(0, 0, 0);
+        background-color: rgb(100, 100, 100);
+    }
+    .funcButton{
+        background-color: rgb(71, 196, 241);
+        font-family: Arial;
+        font-size: 20px;
+        border: 5px solid rgb(0, 0, 0);
+    }
+    .RegisterFont{
+        font-family: Arial;
+        color: rgb(255, 255, 0);
+    }
+    th,td{
+        border:2px solid black;
+    }
+    table{border-collapse: collapse;}
+    td{padding: 20px;}
+</style>
+<body>
+<div class="RegisterBoxFrame">
+    <form method="post">
+<h3 th:text="${owner}"></h3>
+    <h3 th:text="'Город: '+${property.getCity()}+'Адрес: '+${property.getAddress()}"></h3>
+    <div>
+        <textarea  class="DescriptionBoxFrame" readonly  th:text="${property.getRentalDescription()}" cols="80" rows="6">   </textarea>
+    </div>
+    <h3 th:text="'Тип собственности: '+${property.getRentalType()}"></h3>
+    <h3 th:text="'Статус аренды: ' + ${property.getRentalStatus()}"></h3>
+
+    <h3 th:text="'Макс количество проживающих: '+${property.getCapacity()}"></h3>
+    <h3 th:text="${allowChildren}"></h3>
+    <h3 th:text="'Стоимость проживания в сутки: ' + ${property.getRentalPrice()}"></h3>
+        <ul th:value="${property.getRentalStatus()}">
+            <li> <input type="radio" name="rentalStatus" value="vacant" checked>Свободно для аренды</li>
+            <li> <input type="radio" name="rentalStatus" value="occupied">Занято/арендовано</li>
+            <li> <input type="radio" name="rentalStatus" value="maintenance">ремонт/обслуживание</li>
+            <li> <input type="radio" name="rentalStatus" value="closed">Закрыто</li>
+        </ul>
+     <h2>Изображения</h2>
+    <div th:each="i: ${propertyImages}">
+        <img th:src="${i.getImageUrl()}" width="300" height="200">
+    </div>
+        <button type="submit"> Внести изменения</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.example.trainingapp1.controllers;
 
+import com.example.trainingapp1.models.DetailUserModel;
 import com.example.trainingapp1.models.UserModel;
+import com.example.trainingapp1.repos.DetailUserRepo;
 import com.example.trainingapp1.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import java.util.List;
 public class MainController {
     @Autowired
     UserRepo userRepo;
+    @Autowired
+    DetailUserRepo detailUserRepo;
 @GetMapping
     public String GetMainPage(){
     boolean anyAdmins = false;
@@ -24,13 +28,17 @@ public class MainController {
             anyAdmins = true;
         }
     }
-    if ( !anyAdmins){
-        UserModel userModel = new UserModel();
-        userModel.setUserType("admin");
-        userModel.setLogin("admin");
-        userModel.setPassword("password");
-        userRepo.save(userModel);
-    }
+  //  if ( !anyAdmins){
+  //      UserModel userModel = new UserModel();
+  //      userModel.setUserType("admin");
+  //      userModel.setLogin("admin");
+  //      userModel.setPassword("password");
+  //      DetailUserModel detailUserModel = new DetailUserModel();
+  //      detailUserModel.setUserTableId(userModel.getId());
+   //     detailUserModel.setUserName("admin");
+  //      userRepo.save(userModel);
+  //          detailUserRepo.save(detailUserModel);
+  //  }
     return "index";
 }
 }

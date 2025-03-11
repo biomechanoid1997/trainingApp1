@@ -1,7 +1,9 @@
 package com.example.trainingapp1.controllers;
 
+import com.example.trainingapp1.models.DetailUserModel;
 import com.example.trainingapp1.models.MessageModel;
 import com.example.trainingapp1.models.PropertyModel;
+import com.example.trainingapp1.models.UserModel;
 import com.example.trainingapp1.repos.DetailUserRepo;
 import com.example.trainingapp1.repos.MessageRepo;
 import com.example.trainingapp1.repos.PropertyRepo;
@@ -33,6 +35,7 @@ public class MessageController {
 
         MessageModel messageModel = messageRepo.findById(id);
         /////////////////////////////////////////////////////////////////////////////////////////////////
+        //Заявка на аренду
         if (messageModel.getMessageType().equals("rental_request")) {
             PropertyModel propertyModel = propertyRepo.findById(messageModel.getRequestPropertyId());
             messageModel.setMessageStatus("read");
@@ -63,7 +66,32 @@ public class MessageController {
             return "request";
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////
-
+     ////////////////////апелляция на бан
+        if (messageModel.getMessageType().equals("banAppeal")){
+            UserModel userModel = userRepo.findById(messageModel.getSenderID());
+            DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userModel.getId());
+            String appealInfo = "Пользователь: " + detailUserModel.getFirstName() + " " +detailUserModel.getLastName();
+            String messageText = messageModel.getMessageText();
+            messageModel.setMessageStatus("read");
+            messageRepo.save(messageModel);
+            model.addAttribute("appealInfo",appealInfo);
+            model.addAttribute("messageText",messageText);
+            model.addAttribute("id",messageModel.getSenderID());
+            return "messageFromAdmin";
+        }
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////сообщение от администрации
+        if (messageModel.getMessageType().equals("messageFromAdmin")){
+            UserModel userModel = userRepo.findById(messageModel.getReceiverID());
+            DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userModel.getId());
+            String appealInfo = "Пользователь: " + detailUserModel.getFirstName() + " " +detailUserModel.getLastName();
+            String messageText = messageModel.getMessageText();
+            messageModel.setMessageStatus("read");
+            messageRepo.save(messageModel);
+            model.addAttribute("messageText",messageText);
+            model.addAttribute("id",messageModel.getSenderID());
+            return "messageFromAdmin";
+        }
         return "request";
     }
 

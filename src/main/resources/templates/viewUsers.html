@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  .RegisterBoxFrame{
+    border: 10px solid rgb(0, 0, 0);
+    background-color: rgb(100, 100, 100);
+  }
+  .funcButton{
+    background-color: rgb(71, 196, 241);
+    font-family: Arial;
+    font-size: 20px;
+    border: 5px solid rgb(0, 0, 0);
+  }
+  .RegisterFont{
+    font-family: Arial;
+    color: rgb(255, 255, 0);
+  }
+  th,td{
+    border:2px solid black;
+  }
+  table{border-collapse: collapse;}
+  td{padding: 20px;}
+</style>
+<body>
+<div class="RegisterBoxFrame">
+  <table>
+   <tr><th>Логин пользователя</th><th>Электронная почта</th><th>Статус пользователя</th><th>Тип пользователя</th><th>Имя фамилия</th><th>Дополнительно</th></tr>
+ <tr th:each="i: ${userList}">
+     <td th:text="${i.getLogin}"></td>
+     <td th:text="${i.getEmail}"></td>
+     <td th:text="${i.getUserStatus}"></td>
+     <td th:text="${i.getUserType}"></td>
+     <td th:text="${i.getUserName}"></td>
+     <td> <a class="funcButton" th:href="'/detailUserPage/'+${i.getId()} ">Подробнее</a>
+         <a class="funcButton" th:href="'/editModerator/' +${i.getId()}" th:text="${i.getModeratorLine()}">сделать модератором</a>
+         <a class="funcButton" th:href="'/banUser/' +${i.getId()}" th:text="${i.getBanLine()}">заблокировать</a>
+     </td>
+ </tr>
+  </table>
+</div>
+</body>
+</html>

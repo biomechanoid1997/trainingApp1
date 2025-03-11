@@ -45,6 +45,9 @@ public class MessageListController {
             if (messageModelList.get(i).getMessageType().equals("rental_request")){
                 messageModelList.get(i).setMessageType("Заявка на аренду");
             }
+            if (messageModelList.get(i).getMessageType().equals("messageFromAdmin")){
+                messageModelList.get(i).setMessageType("сообщение от администрации");
+            }
         }
         model.addAttribute("messages",messageModelList);
         return "messagePage";

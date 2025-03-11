@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .FunctionButton{
+        color: rgb(6, 129, 222);
+        font-size: 25px;
+        font-family: Arial;
+        border: 10px solid rgb(255, 255, 255);
+        background-color: rgb(100, 100, 100);
+    }
+    .AuthorisationBoxFrame{
+        border: 10px solid rgb(0, 0, 0);
+        background-color: rgb(100, 100, 100);
+    }
+    .RegisterFont{
+        font-family: Arial;
+        color: rgb(255, 255, 0);
+    }
+    .ErrorFont{
+        font-family: Arial;
+        color: rgb(255, 255, 255);
+    }
+</style>
+<body>
+<div class="AuthorisationBoxFrame">
+<h3 class="ErrorFont" th:text="'Здравствуйте ' + ${userName} +'. Ваша учетная запись заблокирована за нарушение правил сайта'"></h3>
+    <h3 class="ErrorFont">Если вы считаете что произошла ошибка, то вы можете подать апелляцию на блокировку,модераторы рассмотрят её в ближайшее время.</h3>
+    <a class="FunctionButton" th:href="'/messages/' + ${id}">Сообщения</a>
+    <a class="FunctionButton" th:href="'/banAppeal/' + ${id}">Обжаловать блокировку</a>
+</div>
+</body>
+</html>

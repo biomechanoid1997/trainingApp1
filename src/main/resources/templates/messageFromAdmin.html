@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  .RegisterBoxFrame{
+    border: 10px solid rgb(0, 0, 0);
+    background-color: rgb(100, 100, 100);
+  }
+  .DescriptionBoxFrame{
+    border: 5px solid rgb(0, 0, 0);
+    background-color: rgb(150, 150, 150);
+    font-family: Arial;
+    font-size: 15px;
+  }
+  .funcButton{
+    font-size: 20px;
+    font-family: Arial;
+    border: 5px solid rgb(255, 255, 255);
+    background-color: rgb(0, 255, 255);
+  }
+  .RegisterFont{
+    font-family: Arial;
+    color: rgb(255, 255, 0);
+  }
+  .ErrorFont{
+    font-family: Arial;
+    color: rgb(255, 0, 0);
+  }
+  th,td{
+    border:2px solid black;
+  }
+  table{border-collapse: collapse;}
+  td{padding: 20px;}
+</style>
+<body>
+<div class="RegisterBoxFrame">
+<h3>Сообщение.</h3>
+<textarea readonly th:text="${messageText}" class="DescriptionBoxFrame" cols="80" rows="6"></textarea>
+</div>
+</body>
+</html>

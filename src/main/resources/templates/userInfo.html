@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  .RegisterBoxFrame{
+    border: 10px solid rgb(0, 0, 0);
+    background-color: rgb(100, 100, 100);
+  }
+  .funcButton{
+    background-color: rgb(71, 196, 241);
+    font-family: Arial;
+    font-size: 20px;
+    border: 5px solid rgb(0, 0, 0);
+  }
+  .RegisterFont{
+    font-family: Arial;
+    color: rgb(255, 255, 0);
+  }
+  th,td{
+    border:2px solid black;
+  }
+  table{border-collapse: collapse;}
+  td{padding: 20px;}
+</style>
+<body>
+<div class="RegisterBoxFrame">
+    <h3 th:text="'Логин пользователя: '+${user.getLogin}"></h3>
+    <h3 th:text="'Имя пользоавтеля: '+${detailUser.getFirstName()} + ' ' + ${detailUser.getLastName()}"></h3>
+    <h3 th:text="'Email пользователя: '+${user.getEmail()}"></h3>
+    <h3 th:text="'Пол: ' +${detailUser.getSex()}"></h3>
+    <h3 th:text="'Семейный статус: '+${detailUser.getMaritalStatus()}"></h3>
+ <h2>Собственность пользователя</h2>
+    <table>
+    <tr><th>Город</th><th>Адрес</th><th>Тип аренды</th><th>Статус</th><th></th></tr>
+    <tr th:each="i:${propertyList}">
+        <td th:text="${i.getCity()}"></td>
+        <td th:text="${i.getAddress()}"></td>
+        <td th:text="${i.getRentalType()}"></td>
+        <td th:text="${i.getRentalStatus()}"></td>
+        <td><a class="funcButton" th:href="'/adminProperty/'+${i.getId()}" >Подробнее</a></td>
+    </tr>
+    </table>
+</div>
+</body>
+</html>

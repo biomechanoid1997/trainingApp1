@@ -1,6 +1,7 @@
 package com.example.trainingapp1.controllers;
 
 import com.example.trainingapp1.models.DetailUserModel;
+import com.example.trainingapp1.models.UserModel;
 import com.example.trainingapp1.repos.DetailUserRepo;
 import com.example.trainingapp1.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,10 @@ public class UserController {
     DetailUserRepo detailUserRepo;
 
     @GetMapping("/{id}")
-    public String getUserPage(@PathVariable Long id,
+    public String getUserPage(@PathVariable long id,
                               Model model){
-        DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(id);
+        UserModel userModel = userRepo.findById(id);
+        DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userModel.getId());
         String name = "Здравствуйте " + detailUserModel.getFirstName();
         model.addAttribute("Name",name);
         model.addAttribute("ID",id);

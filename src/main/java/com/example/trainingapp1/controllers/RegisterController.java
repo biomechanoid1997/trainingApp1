@@ -47,6 +47,7 @@ public class RegisterController {
        String emailError= "Данный адрес электронной почты уже занят";
         ArrayList<UserModel>userModels = new ArrayList<UserModel>(userRepo.findAll());
         model.addAttribute("text","Текст здесь");
+        if (login.equals("admin")){isUniqueUser = false;}
         for (int i = 0; i < userModels.size(); i++) {
             UserModel userModel1 = userModels.get(i);
             if (login.equals(userModel1.getLogin())){

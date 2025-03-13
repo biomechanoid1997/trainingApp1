@@ -24,6 +24,15 @@ public class UserController {
                               Model model){
         UserModel userModel = userRepo.findById(id);
         DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userModel.getId());
+        ////////////////////////////////////////////////////////////////////////////////////////
+        /////Если пользователь получил модераторство
+        if (userModel.getUserType().equals("moderator")){
+            String name = "Здравствуйте " + detailUserModel.getFirstName();
+            model.addAttribute("Name",name);
+            model.addAttribute("ID",id);
+
+            return "moderatorPage";
+        }
         String name = "Здравствуйте " + detailUserModel.getFirstName();
         model.addAttribute("Name",name);
         model.addAttribute("ID",id);

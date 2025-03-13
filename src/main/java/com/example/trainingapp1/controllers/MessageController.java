@@ -92,6 +92,19 @@ public class MessageController {
             model.addAttribute("id",messageModel.getSenderID());
             return "messageFromAdmin";
         }
+        //////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////Сообщение от модераторов
+        if (messageModel.getMessageType().equals("messageFromModerator")){
+            UserModel userModel = userRepo.findById(messageModel.getReceiverID());
+            DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userModel.getId());
+            String appealInfo = "Пользователь: " + detailUserModel.getFirstName() + " " +detailUserModel.getLastName();
+            String messageText = messageModel.getMessageText();
+            messageModel.setMessageStatus("read");
+            messageRepo.save(messageModel);
+            model.addAttribute("messageText",messageText);
+            model.addAttribute("id",messageModel.getSenderID());
+            return "messageFromAdmin";
+        }
         return "request";
     }
 

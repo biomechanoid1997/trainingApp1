@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .RegisterBoxFrame{
+        border: 10px solid rgb(0, 0, 0);
+        background-color: rgb(100, 100, 100);
+    }
+    .funcButton{
+        background-color: rgb(71, 196, 241);
+        font-family: Arial;
+        font-size: 20px;
+        border: 10px solid rgb(0, 0, 0);
+    }
+    .RegisterFont{
+        font-family: Arial;
+        color: rgb(255, 255, 0);
+    }
+    th,td{
+        border:2px solid black;
+    }
+    table{border-collapse: collapse;}
+    td{padding: 20px;}
+</style>
+<body>
+<h2 th:text="${Name}"></h2>
+<a th:href="'/addProperty/' + ${ID}">Добавить собственность</a><br>
+<a th:href="'/property/viewProperty/' + ${ID}">Посмотреть собственность</a>
+<br>
+<a th:href="'/messages/' + ${ID}">Сообщения</a>
+<div class="RegisterBoxFrame">
+<h2>меню модератора</h2>
+    <a class="funcButton" href="/moderateUsers">Просмотр пользователей</a>
+</div>
+</body>
+</html>

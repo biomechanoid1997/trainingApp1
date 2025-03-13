@@ -40,12 +40,16 @@ public class AuthorisationController {
    for (int i = 0; i < userList.size(); i++) {
                UserModel userModel = userList.get(i);
            if (userModel.getLogin().equals(login)&&userModel.getPassword().equals(password)){
+               ////////////////////////////////////////////////////////////////////////////
+               // Забаненный пользователь
                if (userModel.getUserType().equals("banned")){
                    userId = userModel.getId();
                    DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userId);
                    model.addAttribute("id",detailUserModel.getId());
                    return new RedirectView("/userBanned/" + model.getAttribute("id"));
                }
+
+               ///////////////////////////////////////////////////////////////////////////////////////////
                 userId = userModel.getId();
                 DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userId);
                 String name = "Здравствуйте " +  detailUserModel.getFirstName() + " " + detailUserModel.getLastName();

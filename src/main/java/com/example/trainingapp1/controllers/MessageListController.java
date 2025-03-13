@@ -48,6 +48,9 @@ public class MessageListController {
             if (messageModelList.get(i).getMessageType().equals("messageFromAdmin")){
                 messageModelList.get(i).setMessageType("сообщение от администрации");
             }
+            if (messageModelList.get(i).getMessageType().equals("messageFromModerator")){
+                messageModelList.get(i).setMessageType("сообщение от модераторов");
+            }
         }
         model.addAttribute("messages",messageModelList);
         return "messagePage";

@@ -16,8 +16,8 @@ import java.util.Comparator;
 import java.util.List;
 
 @Controller
-@RequestMapping("/viewUsers")
-public class ViewUserController {
+@RequestMapping("/moderateUsers")
+public class moderateUsersController {
     @Autowired
     UserRepo userRepo;
 
@@ -33,8 +33,8 @@ public class ViewUserController {
         List<ViewUserHelper> viewUserHelperList = new ArrayList<>();
 
         for (int i = 0; i < userModelList.size(); i++) {
-       userModelList.sort(Comparator.comparing(UserModel::getId));
-       detailUserModelList.sort(Comparator.comparing(DetailUserModel::getId));
+            userModelList.sort(Comparator.comparing(UserModel::getId));
+            detailUserModelList.sort(Comparator.comparing(DetailUserModel::getId));
             String moderatorLine ="Сделать модератором";
             String banLine = "Заблокировать";
             if(userModelList.get(i).getUserType().equals("moderator")){
@@ -44,10 +44,10 @@ public class ViewUserController {
                 banLine = "разблокировать";
             }
             String userName = detailUserModelList.get(i).getFirstName() + " " + detailUserModelList.get(i).getLastName();
-                 String userType = "пользователь";
-             if (userModelList.get(i).getUserType().equals("moderator")){
-                 userType = "модератор";
-             }
+            String userType = "пользователь";
+            if (userModelList.get(i).getUserType().equals("moderator")){
+                userType = "модератор";
+            }
             if (userModelList.get(i).getUserType().equals("banned")){
                 userType = "заблокированный";
             }
@@ -60,12 +60,12 @@ public class ViewUserController {
                     userName,
                     moderatorLine,
                     banLine
-                    );
+            );
             viewUserHelperList.add(viewUserHelper);
 
         }
 
         model.addAttribute("userList",viewUserHelperList);
-        return "viewUsers";
+        return "moderateUsers";
     }
 }

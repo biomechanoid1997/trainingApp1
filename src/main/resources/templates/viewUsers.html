@@ -38,6 +38,8 @@
      <td> <a class="funcButton" th:href="'/detailUserPage/'+${i.getId()} ">Подробнее</a>
          <a class="funcButton" th:href="'/editModerator/' +${i.getId()}" th:text="${i.getModeratorLine()}">сделать модератором</a>
          <a class="funcButton" th:href="'/banUser/' +${i.getId()}" th:text="${i.getBanLine()}">заблокировать</a>
+         <br></br>
+         <a class="funcButton" th:href="'/adminMessage/'+${i.getId()}">Отправить сообщение</a>
      </td>
  </tr>
   </table>

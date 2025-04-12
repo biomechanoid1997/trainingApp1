@@ -5,6 +5,26 @@
     <title>Title</title>
 </head>
 <style>
+    body {
+
+        background-color: rgb(2, 70, 161);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #userCabPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        border-radius: 10px 10px 10px 10px;
+        font-family: Arial;
+        color: rgb(0, 255, 0);
+    }
+    .userCabButton{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        font-family: Arial;
+        font-size: 25px;
+        color: rgb(0, 255, 0);
+    }
   .RegisterBoxFrame{
     border: 10px solid rgb(0, 0, 0);
     background-color: rgb(100, 100, 100);
@@ -26,7 +46,7 @@
   td{padding: 20px;}
 </style>
 <body>
-<div class="RegisterBoxFrame">
+<div id="userCabPanel">
     <h3 th:text="'Логин пользователя: '+${user.getLogin}"></h3>
     <h3 th:text="'Имя пользоавтеля: '+${detailUser.getFirstName()} + ' ' + ${detailUser.getLastName()}"></h3>
     <h3 th:text="'Email пользователя: '+${user.getEmail()}"></h3>
@@ -40,7 +60,7 @@
         <td th:text="${i.getAddress()}"></td>
         <td th:text="${i.getRentalType()}"></td>
         <td th:text="${i.getRentalStatus()}"></td>
-        <td><a class="funcButton" th:href="'/adminProperty/'+${i.getId()}" >Подробнее</a></td>
+        <td><a class="userCabButton" th:href="'/adminProperty/'+${i.getId()}" >Подробнее</a></td>
     </tr>
     </table>
 </div>

@@ -14,34 +14,102 @@
   }
   .RegisterFont{
     font-family: Arial;
-    color: rgb(255, 255, 0);
+    color: rgb(0, 255, 0);
   }
-  th,td{
-      border:2px solid black;
+
+
+
+  body {
+      background-color: rgb(2, 70, 161);
+      background-repeat: no-repeat;
+      background-size: cover;
   }
-  table{border-collapse: collapse;}
-  td{padding: 20px;}
+  #userCabPanel{
+      border: 5px solid rgb(33, 159, 248);
+      background-color: rgb(46, 135, 255);
+      border-radius: 10px 10px 10px 10px;
+  }
+  .propertyCard{
+      font-size: 20px;
+      padding: 15px;
+      border: 5px solid rgb(33, 159, 248);
+      background-color: rgb(46, 135, 255);
+      border-radius: 10px 50px 10px 50px;
+      margin-bottom: 10px;
+      padding: 10px 10px 10px 10px;
+
+  }
+  .textArea{
+      font-size: 20px;
+  }
+  .userCabButton{
+      border: 5px solid rgb(33, 159, 248);
+      border-radius: 10px 10px 10px 10px;
+      background-color: rgb(46, 135, 255);
+      font-family: Arial;
+      font-size: 25px;
+      color: rgb(0, 255, 0);
+
+  }
+  .PropertyCabButton{
+      border: 5px solid rgb(33, 159, 248);
+      border-radius: 10px 10px 10px 10px;
+      background-color: rgb(4, 66, 150);
+      font-family: Arial;
+      font-size: 25px;
+      color: rgb(0, 255, 0);
+      margin-bottom: 50px;
+      margin-top: 50px;
+  }
 </style>
 <body>
-<div class="RegisterBoxFrame" >
-    <table>
-        <caption class="RegisterFont"> Собственность пользователя</caption>
-        <tr><th>Город</th><th>Адрес</th><th>Тип собственности</th><th>Описание</th><th>Стоимость проживания</th><th>Вместительность</th><th>Можно детям</th><th>Статус</th><th>Дополнительно</th></tr>
-   <tr th:each="i : ${propertyList}" >
-       <td th:text="${i.getCity()}"></td>
-       <td th:text="${i.getAddress()}"></td>
-       <td th:text="${i.getRentalType()}"></td>
-       <td th:text="${i.getRentalDescription()}"></td>
-       <td th:text="${i.getRentalPrice()}"></td>
-       <td th:text="${i.getCapacity()}"></td>
-       <td th:text="${i.getAllowChildren()}"></td>
-       <td th:text="${i.getRentalStatus()}"></td>
-       <td><a class="funcButton" th:href="'/editProperty/' + ${i.getId()}">Редактировать</a><br></br>
-           <a class="funcButton" th:href="'/deleteProperty/' + ${i.getId()}">удалить</a>
-       </td>
-   </tr>
-    </table>
 
-</div>
+<!--   <div class="RegisterBoxFrame" >
+<!<table>
+      <caption class="RegisterFont"> Собственность пользователя</caption>
+      <tr><th>Город</th><th>Адрес</th><th>Тип собственности</th><th>Описание</th><th>Стоимость проживания</th><th>Вместительность</th><th>Можно детям</th><th>Статус</th><th>Дополнительно</th></tr>
+ <tr th:each="i : ${propertyList}" >
+     <td th:text="${i.getCity()}"></td>
+     <td th:text="${i.getAddress()}"></td>
+     <td th:text="${i.getRentalType()}"></td>
+     <td th:text="${i.getRentalDescription()}"></td>
+     <td th:text="${i.getRentalPrice()}"></td>
+     <td th:text="${i.getCapacity()}"></td>
+     <td th:text="${i.getAllowChildren()}"></td>
+     <td th:text="${i.getRentalStatus()}"></td>
+     <td><a class="funcButton" th:href="'/editProperty/' + ${i.getId()}">Редактировать</a><br></br>
+         <a class="funcButton" th:href="'/deleteProperty/' + ${i.getId()}">удалить</a>
+     </td>
+ </tr>
+  </table>
+
+</div>-->
+ <div class="propertyCard" th:each="i: ${propertyList}">
+ <table>
+     <tr>  <td><p th:text="'Адрес: Г.'+ ${i.getCity()} +' '+${i.getAddress()}"></p>
+         <p th:text="'Тип собственности: '+${i.getRentalType()}"></p>
+     </td>
+         <td>  <h3 align="center">Описание</h3>
+             <textarea class="textArea" readonly  th:text="${i.getRentalDescription()}" cols="80" rows="6"></textarea>
+         </td><td >
+             <br>
+             <br>
+             <a class="PropertyCabButton" th:href="'/editProperty/' + ${i.getId()}">Редактировать</a>
+             <br>
+             <br>
+              <a class="PropertyCabButton" th:href="'/deleteProperty/' + ${i.getId()}">удалить</a>
+         </td></tr>
+
+
+    <!-- <p th:text="'Количество проживающих: '+${i.getCapacity()}"></p>
+     <p th:text="'Можно детям: '+${i.getAllowChildren()}"></p>
+     <p th:text="'Статус аренды: '+${i.getRentalStatus()}"></p> -->
+
+         </table>
+     <br>
+     <div>
+ </div>
+
+ </div>
 </body>
 </html>

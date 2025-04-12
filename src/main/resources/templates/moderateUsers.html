@@ -36,9 +36,24 @@
       <td th:text="${i.getUserType}"></td>
       <td th:text="${i.getUserName}"></td>
       <td> <a class="funcButton" th:href="'/detailUserPage/'+${i.getId()} ">Подробнее</a>
-        <a class="funcButton" th:href="'/banUser/' +${i.getId()}" th:text="${i.getBanLine()}">заблокировать</a>
+        <a class="funcButton" th:href="'/moderatorBanUser/' +${i.getId()}" th:text="${i.getBanLine()}">заблокировать</a>
         <br></br>
         <a class="funcButton" th:href="'/moderatorMessage/'+${i.getId()}">Отправить сообщение</a>
+      </td>
+    </tr>
+  </table>
+  <h2 class="RegisterFont">Модераторы</h2>
+  <table>
+    <tr><th>Логин пользователя</th><th>Электронная почта</th><th>Статус пользователя</th><th>Тип пользователя</th><th>Имя фамилия</th><th>Дополнительно</th></tr>
+    <tr th:each="j: ${moderatorList}">
+      <td th:text="${j.getLogin}"></td>
+      <td th:text="${j.getEmail}"></td>
+      <td th:text="${j.getUserStatus}"></td>
+      <td th:text="${j.getUserType}"></td>
+      <td th:text="${j.getUserName}"></td>
+      <td> <a class="funcButton" th:href="'/detailUserPage/'+${j.getId()} ">Подробнее</a>
+        <br></br>
+        <a class="funcButton" th:href="'/moderatorMessage/'+${j.getId()}">Отправить сообщение</a>
       </td>
     </tr>
   </table>

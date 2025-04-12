@@ -5,6 +5,27 @@
     <title>Title</title>
 </head>
 <style>
+    body {
+
+        background-color: rgb(2, 70, 161);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #userCabPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        border-radius: 10px 10px 10px 10px;
+        font-family: Arial;
+        color: rgb(0, 255, 0);
+    }
+    .userCabButton{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        font-family: Arial;
+        font-size: 25px;
+        color: rgb(0, 255, 0);
+    }
+
     .RegisterBoxFrame{
         border: 10px solid rgb(0, 0, 0);
         background-color: rgb(100, 100, 100);
@@ -16,18 +37,52 @@
         font-family: Arial;
         color: rgb(255, 255, 0);
     }
+    .propertyCard{
+        border: 5px solid rgb(33, 248, 44);
+        background-color: rgb(0, 150, 0);
+        border-radius: 10px 30px 10px 30px;
+        color: rgb(0, 255, 0);
+        width: 800px;
+        margin: 5px;
+    }
+    .moreInfo{
+        border: 5px solid rgb(0, 255, 255);
+        background-color: rgb(0, 150, 150);
+        border-radius: 10px 10px 10px 10px;
+        color: rgb(0, 255, 255);
+        width: 800px;
+        padding: 5px 5px 5px 5px;
+        margin: 5px 5px 5px 5px;
+        font-size: 25px;
+    }
     .ErrorFont{
         font-family: Arial;
         color: rgb(255, 0, 0);
     }
     th,td{
-        border:2px solid black;
     }
     table{border-collapse: collapse;}
-    td{padding: 20px;}
+    td{padding: 5px;}
 </style>
 <body>
-<div class="RegisterBoxFrame" >
+
+<div align="center" id="userCabPanel">
+    <h2 class="ErrorFont" th:text="${rentalError}"></h2>
+  <h2>Доступная аренда</h2>
+    <div class="propertyCard" th:each="i:${propertyList}">
+        <table>
+            <tr><td>
+                <div>
+                <h3 th:text="'Тип собственности: ' +${i.getRentalType()}"></h3>
+                <h3 th:text="'Город: '+${i.getCity()} + '  адрес: ' + ${i.getAddress()}"></h3>
+    </div>
+            </td><td>
+            <a class="moreInfo" th:href="'/viewRental/' + ${i.getId()}"> Подробнее</a>
+            </td></tr>
+        </table>
+    </div>
+</div>
+<!-- <div class="RegisterBoxFrame" >
     <h2 class="ErrorFont" th:text="${rentalError}"></h2>
     <table>
         <caption class="RegisterFont"> Доступная аренда</caption>
@@ -41,11 +96,11 @@
             <td th:text="${i.getAllowChildren()}"></td>
             <td><a class="funcButton" th:href="'/viewRental/' + ${i.getId()}">Подробнее</a>
                 <br></br>
-           <!--     <a class="funcButton" th:href="'/deleteProperty/' + ${i.getId()}">Оставить заявку</a> -->
+             <a class="funcButton" th:href="'/deleteProperty/' + ${i.getId()}">Оставить заявку</a>
             </td>
         </tr>
     </table>
 
-</div>
+</div> -->
 </body>
 </html>

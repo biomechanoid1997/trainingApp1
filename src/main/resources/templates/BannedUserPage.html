@@ -5,6 +5,25 @@
     <title>Title</title>
 </head>
 <style>
+    body {
+
+        background-color: rgb(2, 70, 161);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #userCabPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        border-radius: 10px 10px 10px 10px;
+        padding: 10px 10px 10px 10px;
+    }
+    .userCabButton{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        font-family: Arial;
+        font-size: 25px;
+        color: rgb(0, 255, 0);
+    }
     .FunctionButton{
         color: rgb(6, 129, 222);
         font-size: 25px;
@@ -26,11 +45,11 @@
     }
 </style>
 <body>
-<div class="AuthorisationBoxFrame">
-<h3 class="ErrorFont" th:text="'Здравствуйте ' + ${userName} +'. Ваша учетная запись заблокирована за нарушение правил сайта'"></h3>
-    <h3 class="ErrorFont">Если вы считаете что произошла ошибка, то вы можете подать апелляцию на блокировку,модераторы рассмотрят её в ближайшее время.</h3>
-    <a class="FunctionButton" th:href="'/messages/' + ${id}">Сообщения</a>
-    <a class="FunctionButton" th:href="'/banAppeal/' + ${id}">Обжаловать блокировку</a>
+<div id="userCabPanel">
+<h3 th:text="'Здравствуйте ' + ${userName} +'. Ваша учетная запись заблокирована за нарушение правил сайта'"></h3>
+    <h3>Если вы считаете что произошла ошибка, то вы можете подать апелляцию на блокировку,модераторы рассмотрят её в ближайшее время.</h3>
+    <a class="userCabButton" th:href="'/messages/' + ${id}">Сообщения</a>
+    <a class="userCabButton" th:href="'/banAppeal/' + ${id}">Обжаловать блокировку</a>
 </div>
 </body>
 </html>

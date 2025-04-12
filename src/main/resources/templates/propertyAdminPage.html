@@ -5,6 +5,25 @@
     <title>Title</title>
 </head>
 <style>
+    body {
+        background-color: rgb(2, 70, 161);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #userCabPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        border-radius: 10px 10px 10px 10px;
+        padding: 10px 10px 10px 10px;
+    }
+    .cabImage{
+        margin: 5px 5px 5px 5px;
+        flex-wrap: wrap;
+        position:relative;
+        display: table-cell;
+        float: left;
+        grid-auto-rows: auto;
+    }
     .RegisterBoxFrame{
         border: 10px solid rgb(0, 0, 0);
         background-color: rgb(100, 100, 100);
@@ -20,18 +39,18 @@
         color: rgb(255, 255, 0);
     }
     th,td{
-        border:2px solid black;
+        border:none;
     }
     table{border-collapse: collapse;}
     td{padding: 20px;}
 </style>
 <body>
-<div class="RegisterBoxFrame">
+<div id="userCabPanel">
     <form method="post">
 <h3 th:text="${owner}"></h3>
     <h3 th:text="'Город: '+${property.getCity()}+'Адрес: '+${property.getAddress()}"></h3>
     <div>
-        <textarea  class="DescriptionBoxFrame" readonly  th:text="${property.getRentalDescription()}" cols="80" rows="6">   </textarea>
+        <textarea   readonly  th:text="${property.getRentalDescription()}" cols="80" rows="6">   </textarea>
     </div>
     <h3 th:text="'Тип собственности: '+${property.getRentalType()}"></h3>
     <h3 th:text="'Статус аренды: ' + ${property.getRentalStatus()}"></h3>
@@ -46,9 +65,14 @@
             <li> <input type="radio" name="rentalStatus" value="closed">Закрыто</li>
         </ul>
      <h2>Изображения</h2>
-    <div th:each="i: ${propertyImages}">
-        <img th:src="${i.getImageUrl()}" width="300" height="200">
-    </div>
+        <table>
+            <tr><td>
+                <div  class="cabImage"  th:each="i: ${propertyImages}">
+                    <img class="cabImage" th:src="${i.getImageUrl()}" width="300" height="200">
+                </div>
+            </td></tr>
+        </table>
+
         <button type="submit"> Внести изменения</button>
     </form>
 </div>

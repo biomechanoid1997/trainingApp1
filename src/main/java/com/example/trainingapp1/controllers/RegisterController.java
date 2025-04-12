@@ -31,7 +31,7 @@ public class RegisterController {
 
 ///////////////////////////////////////////////////////
     @PostMapping
-    public RedirectView postUser(@RequestParam String login,
+    public String postUser(@RequestParam String login,
                                  @RequestParam String password,
                                  @RequestParam String email,
                                  @RequestParam String firstName,
@@ -43,29 +43,48 @@ public class RegisterController {
         DetailUserModel detailUserModel = new DetailUserModel();
         boolean isUniqueUser = true;
         boolean isUniqueEmail = true;
+        boolean isEmailValid = false;
        String userError = "Данный пользователь уже существует";
        String emailError= "Данный адрес электронной почты уже занят";
+       String validationError="Введите адрес электронной почты";
         ArrayList<UserModel>userModels = new ArrayList<UserModel>(userRepo.findAll());
         model.addAttribute("text","Текст здесь");
         if (login.equals("admin")){isUniqueUser = false;}
         for (int i = 0; i < userModels.size(); i++) {
             UserModel userModel1 = userModels.get(i);
             if (login.equals(userModel1.getLogin())){
+                model.addAttribute("userError",userError);
                 isUniqueUser = false;
-
             }
-            if (login.equals(userModel1.getLogin())){
+            if (email.equals(userModel1.getEmail())){
                 isUniqueEmail = false;
                 model.addAttribute("emailError",emailError);
             }
         }
-        if (isUniqueUser==false || isUniqueEmail==false){
+
+        for (int i = 0; i < email.length(); i++) {
+            if (email.charAt(i)=='@'){
+                for (int j = i; j < email.length(); j++) {
+                    if (email.charAt(j)=='.'){
+                        isEmailValid = true;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+
+        if (!isEmailValid){
+            model.addAttribute("validationError",validationError);
+        }
+
+        if (isUniqueUser==false || isUniqueEmail==false || isEmailValid==false){
             model.addAttribute("firstName",firstName);
             model.addAttribute("lastName",lastName);
             model.addAttribute("birthdate",birthDate);
             model.addAttribute("sex",sex);
             model.addAttribute("maritalStatus",maritalStatus);
-            return new RedirectView("/register");
+            return "RegisterUser";
         }
 
 
@@ -88,7 +107,7 @@ public class RegisterController {
         detailUserModel.setSex(sex);
         detailUserModel.setMaritalStatus(maritalStatus);
         detailUserRepo.save(detailUserModel);
-     return new RedirectView("/");
+     return "index";
     }
     //////////////////////////////////////////////////////////////
 

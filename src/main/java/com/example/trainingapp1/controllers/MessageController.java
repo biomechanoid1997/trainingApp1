@@ -71,13 +71,14 @@ public class MessageController {
             UserModel userModel = userRepo.findById(messageModel.getSenderID());
             DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userModel.getId());
             String appealInfo = "Пользователь: " + detailUserModel.getFirstName() + " " +detailUserModel.getLastName();
+            String contactInfo = messageModel.getContactInfo();
             String messageText = messageModel.getMessageText();
             messageModel.setMessageStatus("read");
             messageRepo.save(messageModel);
-            model.addAttribute("appealInfo",appealInfo);
+            model.addAttribute("contactInfo",contactInfo);
             model.addAttribute("messageText",messageText);
             model.addAttribute("id",messageModel.getSenderID());
-            return "messageFromAdmin";
+            return "messageFromUser";
         }
         ///////////////////////////////////////////////////////////////////////////
         ///////////////////////сообщение от администрации
@@ -105,6 +106,20 @@ public class MessageController {
             model.addAttribute("id",messageModel.getSenderID());
             return "messageFromAdmin";
         }
+        //////////////////////////////Сообщение от модераторов
+        if (messageModel.getMessageType().equals("messageToAdmin")){
+            UserModel userModel = userRepo.findById(messageModel.getSenderID());
+            DetailUserModel detailUserModel = detailUserRepo.findDetailUserModelByUserTableId(userModel.getId());
+            String messageText = messageModel.getMessageText();
+            String contactInfo = messageModel.getContactInfo();
+            messageModel.setMessageStatus("read");
+            messageRepo.save(messageModel);
+            model.addAttribute("contactInfo",contactInfo);
+            model.addAttribute("messageText",messageText);
+            model.addAttribute("id",messageModel.getSenderID());
+            return "messageFromUser";
+        }
+       ////////////////////////////////////////////////////////////////////
         return "request";
     }
 

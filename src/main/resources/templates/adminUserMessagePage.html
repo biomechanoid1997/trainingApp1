@@ -5,6 +5,25 @@
     <title>Title</title>
 </head>
 <style>
+  body {
+
+    background-color: rgb(2, 70, 161);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #adminCabPanel{
+    border: 5px solid rgb(33, 159, 248);
+    background-color: rgb(46, 135, 255);
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+  }
+  .adminCabButton{
+    border: 5px solid rgb(33, 159, 248);
+    background-color: rgb(46, 135, 255);
+    font-family: Arial;
+    font-size: 25px;
+    color: rgb(0, 255, 0);
+  }
   .RegisterBoxFrame{
     border: 10px solid rgb(0, 0, 0);
     background-color: rgb(100, 100, 100);
@@ -36,16 +55,16 @@
   td{padding: 20px;}
 </style>
 <body>
-<div class="RegisterBoxFrame">
+<div id="adminCabPanel">
   <table>
-    <h2 class="RegisterFont" th:text="${noMessages}"></h2>
+    <h2  th:text="${noMessages}"></h2>
     <th>Дата</th><th>Тип сообщения</th><th>Статус</th><th></th>
     <tr th:each="i : ${messages}">
       <td th:text="${i.getMessageDate()}"></td>
       <td th:text="${i.getMessageType()}"></td>
       <td th:text="${i.getMessageStatus()}"></td>
       <td >
-        <a th:href="'/message/' + ${i.getId()}" class="funcButton" >Прочитать</a>
+        <a th:href="'/message/' + ${i.getId()}" class="adminCabButton" >Прочитать</a>
       </td>
     </tr>
   </table>

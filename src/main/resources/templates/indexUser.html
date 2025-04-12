@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>PlaceToStay</title>
+<style>
+    body {
+        background-image: url('/images/background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #SearchRent{
+        background-image: url('/images/searchRentA.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+
+    }
+    #SearchRent:link{
+        background-image: url('/images/searchRentA.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #SearchRent:visited{
+        background-image: url('/images/searchRentA.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #SearchRent:hover{
+        background-image: url('/images/searchRentB.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #SearchRent:active{
+        background-image: url('/images/searchRentC.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #headerPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+    }
+    #subTitle{
+        color: rgb(222, 103, 6);
+        font-size: 50px;
+        font-family: Arial;
+    }
+
+    #AboutUs{
+        background-image: url('/images/AboutUsA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:link{
+        background-image: url('/images/AboutUsA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:visited{
+        background-image: url('/images/AboutUsA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:hover{
+        background-image: url('/images/AboutUsB.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:active{
+        background-image: url('/images/AboutUsC.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Cabinet{
+        background-image: url('/images/cabinetA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Cabinet:link{
+        background-image: url('/images/cabinetA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Cabinet:visited{
+        background-image: url('/images/cabinetA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Cabinet:hover{
+        background-image: url('/images/cabinetB.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Cabinet:active{
+        background-image: url('/images/cabinetC.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .FunctionButton{
+        color: rgb(6, 129, 222);
+        font-size: 25px;
+        font-family: Arial;
+        border: 10px solid rgb(255, 255, 255);
+        background-color: rgb(100, 100, 100);
+    }
+    #Exit{
+        background-image: url('/images/exitA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+
+    }
+    #Exit:link{
+        background-image: url('/images/exitA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #Exit:visited{
+        background-image: url('/images/exitA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #Exit:hover{
+        background-image: url('/images/exitB.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #Exit:active{
+        background-image: url('/images/exitC.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<header>
+    <div id="headerPanel">
+        <!--  <a href="searchRentals" class="FunctionButton">Просмотр жилья для аренды</a> -->
+        <div align="center">
+      <table>
+          <tr>
+              <td rowspan="2"><a href="/aboutUs" ><img id="AboutUs" width="300" height="95"   ></a></td>
+              <td rowspan=2><h2 th:text="${Name}"></h2></td>
+              <td><a th:href="'/user/'+${id}"   ><img id="Cabinet" width="150" height="47"   ></a></td>
+          </tr>
+          <tr><td><a href="/" ><img id="Exit" width="150" height="47"   ></a></td></tr>
+
+         <!--   <a href="aboutUs"   ><img id="AboutUs" width="300" height="95"   ></a> -->
+            </table>
+        </div>
+    </div>
+    <style>
+
+    </style>
+</header>
+<body>
+<div align="center" >
+    <img   src="/images/logoText.png" width="900" height="150"  >
+    <div>
+        <h2 id="subTitle">Поиск и аренда недвижимости</h2>
+    </div>
+</div>
+<div align="center" >
+    <a href="/searchRentals"><img id="SearchRent" width="600" height="190"></a>
+</div>
+<!--<div id="title">
+    <img src="images/house1.png" width="250" height="250" align="left" >
+    <img src="images/block1.png" width="250" height="250" align="right" >
+   <h1> Place to stay</h1>
+    <h5>Бронирование жилья для ваших нужд</h5>
+</div> -->
+<!-- <div id="mainButtonPanel" align="center">
+    <br></br>
+
+    <a href="searchRentals" class="FunctionButton">Просмотр жилья для аренды</a>
+    <a href="register" class="FunctionButton">Зарегистрироватсья</a>
+    <a href="authorise" class="FunctionButton">Войти</a>
+
+    <br></br>
+</div> -->
+</body>
+</html>

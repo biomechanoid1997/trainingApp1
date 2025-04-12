@@ -5,6 +5,15 @@
     <title>Title</title>
 </head>
 <style>
+    body {
+        background-image: url('/images/background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #authorisationPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(34, 87, 160);
+    }
   .FunctionButton{
     color: rgb(6, 129, 222);
     font-size: 25px;
@@ -18,7 +27,7 @@
   }
   .RegisterFont{
     font-family: Arial;
-    color: rgb(255, 255, 0);
+    color: rgb(33, 159, 248);
   }
   .ErrorFont{
       font-family: Arial;
@@ -26,12 +35,13 @@
   }
 </style>
 <body>
-<div class="AuthorisationBoxFrame" align="center">
+<div id="authorisationPanel" align="center">
   <form action="authorise" method="post" >
    <h2  class="RegisterFont">Логин</h2>
     <input  name="login" type="text">
     <h2  class="RegisterFont" >Пароль</h2>
     <input  name="password" type="password">
+      <br>
       <button type="submit">Войти</button>
   </form>
 </div>

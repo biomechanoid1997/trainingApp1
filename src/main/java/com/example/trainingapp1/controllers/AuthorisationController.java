@@ -56,7 +56,9 @@ public class AuthorisationController {
                 model.addAttribute("id",detailUserModel.getId());
                 model.addAttribute("Name",name);
 
-                return new RedirectView("/user/" +model.getAttribute("id")  ) ;
+             return new RedirectView("/userIndex/" +model.getAttribute("id")  ) ;
+          //      return new RedirectView("/userIndex"  ) ;
+               // return new RedirectView("/user/" +model.getAttribute("id")  ) ;
 
             }
             }

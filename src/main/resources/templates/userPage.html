@@ -4,11 +4,44 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    body {
+
+        background-color: rgb(2, 70, 161);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #userCabPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        border-radius: 10px 10px 10px 10px;
+    }
+    .userCabButton{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        font-family: Arial;
+        font-size: 25px;
+        color: rgb(0, 255, 0);
+    }
+</style>
 <body>
+<div id="userCabPanel" align="center">
 <h2 th:text="${Name}"></h2>
-<a th:href="'/addProperty/' + ${ID}">Добавить собственность</a><br>
-<a th:href="'/property/viewProperty/' + ${ID}">Посмотреть собственность</a>
-<br>
-<a th:href="'/messages/' + ${ID}">Сообщения</a>
+    <div>
+<a th:href="'/addProperty/' + ${ID}" class="userCabButton">Добавить собственность</a><br>
+</div>
+    <br>
+    <div>
+<a th:href="'/property/viewProperty/' + ${ID}" class="userCabButton">Посмотреть собственность</a>
+</div>
+    <br>
+    <div>
+<a th:href="'/messages/' + ${ID}" class="userCabButton" >Сообщения</a><p th:text="${newMessages}"></p>
+</div>
+    <div>
+        <a th:href="'/messageToAdmin/' + ${ID}" class="userCabButton" >связаться с администрацией</a><p th:text="${newMessages}"></p>
+    </div>
+
+</div>
 </body>
 </html>

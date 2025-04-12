@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+
+        background-color: rgb(2, 70, 161);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #userCabPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+        border-radius: 10px 10px 10px 10px;
+        font-family: Arial;
+        font-size: 25px;
+        color: rgb(0, 255, 0);
+    }
+    .messageDivPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(23, 72, 138);
+        border-radius: 10px 10px 10px 10px;
+        font-family: Arial;
+        font-size: 25px;
+        color: rgb(33, 159, 248);
+    }
+    .RegisterBoxFrame{
+        border: 10px solid rgb(0, 0, 0);
+        background-color: rgb(100, 100, 100);
+    }
+    .DescriptionBoxFrame{
+        border: 5px solid rgb(0, 0, 0);
+        background-color: rgb(150, 150, 150);
+        font-family: Arial;
+        font-size: 15px;
+    }
+
+    th,td{
+        border:2px solid black;
+    }
+    table{border-collapse: collapse;}
+    td{padding: 20px;}
+</style>
+<body>
+<div align="center" id="userCabPanel">
+    <h3 th:text="${address}"></h3>
+    <h3 th:text="${rentalType}"></h3>
+    <h3>Контактные данные.</h3>
+    <div align="center">
+        <textarea readonly th:text="${contactInfo}" class="messageDivPanel" cols="80" rows="2"></textarea>
+    </div>
+    <div align="center">
+        <h3>Сообщение.</h3>
+        <textarea readonly th:text="${messageText}" class="messageDivPanel" cols="80" rows="6"></textarea>
+    </div>
+
+</div>
+</body>
+</html>

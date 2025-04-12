@@ -8,6 +8,26 @@
    .priceParameters{
        display:inline;
    }
+   body {
+
+       background-color: rgb(2, 70, 161);
+       background-repeat: no-repeat;
+       background-size: cover;
+   }
+   #userCabPanel{
+       border: 5px solid rgb(33, 159, 248);
+       background-color: rgb(46, 135, 255);
+       border-radius: 10px 10px 10px 10px;
+       font-family: Arial;
+       color: rgb(0, 255, 0);
+   }
+   .userCabButton{
+       border: 5px solid rgb(33, 159, 248);
+       background-color: rgb(46, 135, 255);
+       font-family: Arial;
+       font-size: 25px;
+       color: rgb(0, 255, 0);
+   }
     .RegisterBoxFrame{
         border: 10px solid rgb(0, 0, 0);
         background-color: rgb(100, 100, 100);
@@ -18,12 +38,12 @@
     }
 </style>
 <body>
-<div class="RegisterBoxFrame" >
+<div id="userCabPanel" >
     <form method="post">
 
-        <h3 class="RegisterFont">Город</h3>
+        <h3 >Город</h3>
         <input type="text" name="City" size="30" maxlength="30" >
-        <h3 class="RegisterFont">Тип собственности</h3>
+        <h3 >Тип собственности</h3>
         <select name="PropertyType">
             <option value="null">Не имеет значения</option>
             <option value="room">Комната</option>
@@ -33,9 +53,9 @@
             <option value="house">Дом/коттедж</option>
         </select>
 
-        <h3 class="RegisterFont">Количество проживающих</h3>
+        <h3 >Количество проживающих</h3>
         <input type="number" name="humanCapacity" value="0">
-        <h3 class="RegisterFont">Можно-ли с детьми</h3>
+        <h3 >Можно-ли с детьми</h3>
         <input type="hidden" value="false" name="allowChildren">
         <input type="checkbox" value="true" name="allowChildren">
         <!--    <h3 class="RegisterFont">Стоимость проживания в сутки.</h3>

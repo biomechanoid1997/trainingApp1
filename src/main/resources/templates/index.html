@@ -2,6 +2,11 @@
 <html lang="en">
 <title>PlaceToStay</title>
 <style>
+    body {
+        background-image: url('/images/background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     #title{
       background-color: rgb(6, 222, 74);
         border:10px solid rgb(0, 255, 255);
@@ -10,9 +15,93 @@
         font-size: 50px;
         font-family: Arial;
     }
+    #subTitle{
+        color: rgb(222, 103, 6);
+        font-size: 50px;
+        font-family: Arial;
+    }
     #mainButtonPanel{
-       border: 10px solid rgb(0, 255, 255);
+       border: 10px solid rgb(0, 140, 255);
         background-color: rgb(217, 75, 23);
+    }
+    #headerPanel{
+        border: 5px solid rgb(33, 159, 248);
+        background-color: rgb(46, 135, 255);
+    }
+    #Register{
+        background-image: url('/images/RegisterA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Register:link{
+        background-image: url('/images/RegisterA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Register:visited{
+        background-image: url('/images/RegisterA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Register:hover{
+        background-image: url('/images/RegisterB.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Register:active{
+        background-image: url('/images/RegisterC.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Authorise{
+        background-image: url('/images/EnterA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Authorise:link{
+        background-image: url('/images/EnterA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Authorise:visited{
+        background-image: url('/images/EnterA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Authorise:hover{
+        background-image: url('/images/EnterB.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #Authorise:active{
+        background-image: url('/images/EnterC.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs{
+        background-image: url('/images/AboutUsA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:link{
+        background-image: url('/images/AboutUsA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:visited{
+        background-image: url('/images/AboutUsA.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:hover{
+        background-image: url('/images/AboutUsB.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #AboutUs:active{
+        background-image: url('/images/AboutUsC.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     .FunctionButton{
         color: rgb(6, 129, 222);
@@ -21,28 +110,82 @@
         border: 10px solid rgb(255, 255, 255);
         background-color: rgb(100, 100, 100);
     }
+    #SearchRent{
+        background-image: url('/images/searchRentA.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+
+    }
+    #SearchRent:link{
+        background-image: url('/images/searchRentA.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #SearchRent:visited{
+        background-image: url('/images/searchRentA.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #SearchRent:hover{
+        background-image: url('/images/searchRentB.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #SearchRent:active{
+        background-image: url('/images/searchRentC.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
+    #SearchRent img{
+        background-image: url('/images/searchRentC.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<header>
+    <div id="headerPanel">
+      <!--  <a href="searchRentals" class="FunctionButton">Просмотр жилья для аренды</a> -->
+<div align="center">
+        <a href="/register"   ><img id="Register" width="300" height="95"   ></a>
+        <a href="/authorise"   ><img id="Authorise" width="300" height="95"   ></a>
+        <a href="/aboutUs"   ><img id="AboutUs" width="300" height="95"   ></a>
+    </div>
+    </div>
+</header>
 <body>
-<div id="title">
+<div align="center" >
+<img   src="/images/logoText.png" width="900" height="150"  >
+    <div>
+    <h2 id="subTitle">Поиск и аренда недвижимости</h2>
+</div>
+</div>
+<div align="center" >
+    <a href="/searchRentals"><img id="SearchRent" width="600" height="190"></a>
+</div>
+<!--<div id="title">
     <img src="images/house1.png" width="250" height="250" align="left" >
     <img src="images/block1.png" width="250" height="250" align="right" >
    <h1> Place to stay</h1>
     <h5>Бронирование жилья для ваших нужд</h5>
-</div>
-<div id="mainButtonPanel" align="center">
+</div> -->
+<!-- <div id="mainButtonPanel" align="center">
     <br></br>
- <!--   <button type="button" ><img src="images/view.jpg" width="300" height=90" alt="просмотр доступного жилья" ></button> -->
- <!--   <button type="button" ><img src="images/enter.jpg" width="300" height=90" alt="войти" ></button> -->
- <!--    <button type="button"  href="register">Зарегистрироваться</button> -->
+
     <a href="searchRentals" class="FunctionButton">Просмотр жилья для аренды</a>
     <a href="register" class="FunctionButton">Зарегистрироватсья</a>
     <a href="authorise" class="FunctionButton">Войти</a>
 
     <br></br>
-</div>
+</div> -->
 </body>
 </html>
